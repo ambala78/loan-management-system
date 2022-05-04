@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5455/lmsDB
+    username: lmsUser
+    password: one@word1
+  jpa:
+    hibernate.ddl-auto: "create-drop"
+  data:
+    rest:
+      basePath: "/api"
