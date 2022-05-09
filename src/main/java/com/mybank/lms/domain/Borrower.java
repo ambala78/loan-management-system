@@ -7,14 +7,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class GreetResponse {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Borrower implements Serializable {
     @Id
-    private String helloName;
-    private String jobExpansion;
+    private Long ssn;
+    private String firstName;
+    private String lastName;
 }

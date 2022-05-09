@@ -1,6 +1,9 @@
 package com.mybank.lms.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,6 +16,9 @@ import javax.persistence.SequenceGenerator;
 import java.io.Serializable;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @SequenceGenerator(name = "loanSequence", sequenceName = "loan_seq", initialValue = 3000)
 public class Loan implements Serializable {
@@ -25,6 +31,10 @@ public class Loan implements Serializable {
     private String status;
     private String fee;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="propertyId_fk")
+    @JoinColumn(name = "propertyId_fk")
     private Property property;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "borrowerSsn_fk")
+    private Borrower borrower;
 }

@@ -1,5 +1,6 @@
 package com.mybank.lms.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Property implements Serializable {
     private String city;
     private String state;
     private String zip;
+    @JsonIgnore
     @OneToOne(mappedBy = "property")
     private Loan loan;
 }

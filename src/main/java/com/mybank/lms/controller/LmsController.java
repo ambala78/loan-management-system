@@ -1,28 +1,45 @@
 package com.mybank.lms.controller;
 
-import com.mybank.lms.domain.GreetRequest;
-import com.mybank.lms.domain.GreetResponse;
 import com.mybank.lms.domain.LmsUser;
-import com.mybank.lms.service.ExpansionService;
+import com.mybank.lms.domain.Loan;
+import com.mybank.lms.exception.LmsMissingParameterException;
+import com.mybank.lms.service.LmsLoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/lms/v1")
+@RequestMapping("/api")
 public class LmsController {
 
     @Autowired
-    private ExpansionService expansionService;
+    LmsLoanService lmsLoanService;
 
-    @PostMapping(path = "/greetMe",
+    @PostMapping(path = "/saveLoan",
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public GreetResponse helloWorld(@RequestBody GreetRequest greetRequest, @AuthenticationPrincipal LmsUser lmsUser) {
-        return expansionService.expand(greetRequest);
+    public Loan saveLoan(@RequestBody Loan loan, @AuthenticationPrincipal LmsUser lmsUser) {
+        return lmsLoanService.saveLoan(loan);
+    }
+
+    @GetMapping(path = "/searchLoan",
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public Loan searchLoan(@RequestParam Optional<String> loanNumber,
+                           @RequestParam Optional<String> firstName,
+                           @RequestParam Optional<String> lastName) {
+        if (!loanNumber.isPresent() && !firstName.isPresent() && !lastName.isPresent()) {
+            throw new LmsMissingParameterException();
+        } else {
+            return lmsLoanService.searchBy(loanNumber, firstName, lastName);
+        }
     }
 }

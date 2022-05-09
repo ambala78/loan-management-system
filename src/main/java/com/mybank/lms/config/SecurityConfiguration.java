@@ -32,6 +32,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((authorize) -> authorize
+                .antMatchers("/api/**/search/**").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/api/**").hasRole("ADMIN")
                 .antMatchers("/lms/**").hasRole("USER")
                 .antMatchers("/lmsui/**", "/", "/**").hasAnyRole("ADMIN", "USER")
