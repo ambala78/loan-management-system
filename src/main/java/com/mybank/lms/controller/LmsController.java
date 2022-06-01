@@ -26,12 +26,11 @@ public class LmsController {
     @PostMapping(path = "/saveLoan",
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public Loan saveLoan(@RequestBody Loan loan, @AuthenticationPrincipal LmsUser lmsUser) {
+    public Loan saveLoan(@RequestBody Loan loan) {
         return lmsLoanService.saveLoan(loan);
     }
 
     @GetMapping(path = "/searchLoan",
-        consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public Loan searchLoan(@RequestParam Optional<String> loanNumber,
                            @RequestParam Optional<String> firstName,
@@ -41,5 +40,21 @@ public class LmsController {
         } else {
             return lmsLoanService.searchBy(loanNumber, firstName, lastName);
         }
+    }
+
+    @GetMapping(path = "/getLoan",
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public Loan getLoanById(@RequestParam Optional<Long> loanId) {
+        if (!loanId.isPresent()) {
+            throw new LmsMissingParameterException();
+        } else {
+            return lmsLoanService.getLoanById(loanId.get());
+        }
+    }
+
+    @GetMapping(path = "/user",
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public LmsUser authenticateUser(@AuthenticationPrincipal LmsUser lmsUser) {
+        return lmsUser;
     }
 }

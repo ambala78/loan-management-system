@@ -24,7 +24,7 @@ import java.io.Serializable;
 public class Loan implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "loanSequence")
-    private Long loadId;
+    private Long loanId;
     private String number;
     private String amount;
     private String term;

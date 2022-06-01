@@ -32,7 +32,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((authorize) -> authorize
-                .antMatchers("/api/**/search/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/api/**/search/**", "/api/user", "/api/searchLoan", "/api/getLoan").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/api/**").hasRole("ADMIN")
                 .antMatchers("/lms/**").hasRole("USER")
                 .antMatchers("/lmsui/**", "/", "/**").hasAnyRole("ADMIN", "USER")
@@ -41,6 +41,7 @@ public class SecurityConfiguration {
             .csrf().disable()
             .httpBasic(withDefaults())
             .formLogin(withDefaults());
+//        .logout(logout -> logout.logoutUrl("/lmsui/logout"));
         return http.build();
     }
 

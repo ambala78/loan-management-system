@@ -8,3 +8,9 @@ spring:
   data:
     rest:
       basePath: "/api"
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+

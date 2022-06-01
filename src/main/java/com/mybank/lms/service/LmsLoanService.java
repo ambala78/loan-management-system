@@ -45,4 +45,13 @@ public class LmsLoanService {
         }
     }
 
+
+    public Loan getLoanById(Long loanId) {
+        Optional<Loan> loanOptional = loanRepository.findById(loanId);
+        if (!loanOptional.isPresent()) {
+            throw new LoanNotFoundException();
+        }
+        return loanOptional.get();
+    }
+
 }
