@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "1e23fa17-2152-4e88-bd96-076ff2e02379",
+		"name": "bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Lms User",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "balaadmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"lmsUsername\":  \"bala1\",\r\n\t\"lmsUserpass\": \"{noop}pass1\",\r\n    \"lmsUserrole\": \"ROLE_USER\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/lmsUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"lmsUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Property",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "balaadmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"streetNumber\": \"453\",\r\n    \"streetName\": \"Lincon Ave\",\r\n    \"unitNumber\": \"B\",\r\n    \"city\": \"Los Angeles\",\r\n    \"state\": \"CA\",\r\n    \"zip\": \"94404\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/properties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"properties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Borrower",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "balaadmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ssn\": \"123456789\",\r\n    \"firstName\": \"TestFirst\",\r\n    \"lastName\": \"TestLast\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/borrowers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"borrowers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Loan",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "balaadmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"number\":  \"1234\",\r\n\t\"amount\": \"240000\",\r\n    \"term\": \"30yrs\",\r\n    \"status\": \"Open\",\r\n    \"fee\": \"1000\",\r\n    \"property\": {\r\n        \"streetNumber\":  \"453\",\r\n        \"streetName\": \"Lincon Ave\",\r\n        \"unitNumber\": \"B\",\r\n        \"city\": \"Los Angeles\",\r\n        \"state\": \"CA\",\r\n        \"zip\": \"94404\"\r\n    },\r\n    \"borrower\": {\r\n        \"ssn\":  \"123456789\",\r\n        \"firstName\":  \"TestFirst\",\r\n        \"lastName\": \"TestLast\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/loans",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"loans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Loan",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "balaadmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"number\":  \"1234\",\r\n\t\"amount\": \"240000\",\r\n    \"term\": \"30yrs\",\r\n    \"status\": \"Open\",\r\n    \"fee\": \"1000\",\r\n    \"property\": {\r\n        \"streetNumber\":  \"453\",\r\n        \"streetName\": \"Lincon Ave\",\r\n        \"unitNumber\": \"B\",\r\n        \"city\": \"Los Angeles\",\r\n        \"state\": \"CA\",\r\n        \"zip\": \"94404\"\r\n    },\r\n    \"borrower\": {\r\n        \"ssn\":  \"123456789\",\r\n        \"firstName\":  \"TestFirst\",\r\n        \"lastName\": \"TestLast\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/loans/3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"loans",
+						"3000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get LoanById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "balaadmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"number\":  \"1234\",\r\n\t\"amount\": \"240000\",\r\n    \"term\": \"30yrs\",\r\n    \"status\": \"Open\",\r\n    \"fee\": \"1000\",\r\n    \"property\": {\r\n        \"streetNumber\":  \"453\",\r\n        \"streetName\": \"Lincon Ave\",\r\n        \"unitNumber\": \"B\",\r\n        \"city\": \"Los Angeles\",\r\n        \"state\": \"CA\",\r\n        \"zip\": \"94404\"\r\n    },\r\n    \"borrower\": {\r\n        \"ssn\":  \"123456789\",\r\n        \"firstName\":  \"TestFirst\",\r\n        \"lastName\": \"TestLast\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/getLoan?loandId=3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getLoan"
+					],
+					"query": [
+						{
+							"key": "loandId",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Loan",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "balaadmin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/searchLoan?loanNumber=1234&firstName=TestFirst&lastName=TestLast",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"searchLoan"
+					],
+					"query": [
+						{
+							"key": "loanNumber",
+							"value": "1234"
+						},
+						{
+							"key": "firstName",
+							"value": "TestFirst"
+						},
+						{
+							"key": "lastName",
+							"value": "TestLast"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestGreet",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "bala",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":  \"Joshi\",\r\n\t\"jobAbbr\": \"PA\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/lms/v1/greetMe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lms",
+						"v1",
+						"greetMe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
