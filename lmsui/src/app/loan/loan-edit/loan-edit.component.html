@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <h3 class="bg-blue">Loan Information</h3>
+            <div class="row">
+                <div class="col-sm-3 form-group">
+                    <label for="loanNumber">Loan Number</label>
+                    <input type="text" id="loanNumber" class="form-control" name="loanNumber"
+                        [(ngModel)]="currentLoan.number">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="amount">Amount</label>
+                    <input type="text" id="amount" class="form-control" name="amount" [(ngModel)]="currentLoan.amount">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="term">Term</label>
+                    <input type="text" id="term" class="form-control" name="term" [(ngModel)]="currentLoan.term">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="status">Status</label>
+                    <input type="text" id="status" class="form-control" name="status" [(ngModel)]="currentLoan.status">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="fee">Fee</label>
+                    <input type="text" id="fee" class="form-control" name="fee" [(ngModel)]="currentLoan.fee">
+                </div>
+            </div>
+            <hr>
+            <h3>Property Information</h3>
+            <div class="row">
+                <div class="col-sm-3 form-group">
+                    <label for="streetNumber">Street Number</label>
+                    <input type="text" id="streetNumber" class="form-control" name="streetNumber"
+                        [(ngModel)]="currentLoan.property.streetNumber">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="streetName">Street Name</label>
+                    <input type="text" id="streetName" class="form-control" name="streetName"
+                        [(ngModel)]="currentLoan.property.streetName">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="unitNumber">Unit Number</label>
+                    <input type="text" id="unitNumber" class="form-control" name="unitNumber"
+                        [(ngModel)]="currentLoan.property.unitNumber">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" class="form-control" name="city"
+                        [(ngModel)]="currentLoan.property.city">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" class="form-control" name="state"
+                        [(ngModel)]="currentLoan.property.state">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="zip">Zip</label>
+                    <input type="text" id="zip" class="form-control" name="zip" [(ngModel)]="currentLoan.property.zip">
+                </div>
+            </div>
+            <hr>
+            <h3>Borrower Information</h3>
+            <div class="row">
+                <div class="col-sm-3 form-group">
+                    <label for="ssn">SSN</label>
+                    <input type="text" id="ssn" class="form-control" name="ssn" [(ngModel)]="currentLoan.borrower.ssn">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" class="form-control" name="firstName"
+                        [(ngModel)]="currentLoan.borrower.firstName">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" class="form-control" name="lastName"
+                        [(ngModel)]="currentLoan.borrower.lastName">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">
+                        {{ editMode && currentLoan.loanId > 0 ? 'Update' : 'Add' }}
+                    </button>
+                    <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
+                    <button class="btn btn-primary" type="button" (click)="onReset()">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

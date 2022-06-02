@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row">
+                <div class="col-sm-4 form-group">
+                    <label for="loanNumber">Loan Number</label>
+                    <input type="text" id="loanNumber" class="form-control" name="loanNumber" ngModel>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" class="form-control" name="firstName" ngModel>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" class="form-control" name="lastName" ngModel>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit">Search</button>
+                    <button class="btn btn-primary" type="button" (click)="onClear(f)">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

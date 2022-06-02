@@ -1,0 +1,43 @@
+<h1 class="edge-header">Welcome to LMS</h1>
+<hr>
+<div class="container" *ngIf="loginService.isAuthenticated()">
+    <p class="label-header make-green">What would like to do?</p>
+
+    <div data-quickedit-entity-id="paragraph/90" class="panel-group" id="partner-accordion" role="tablist"
+        aria-multiselectable="true" data-quickedit-entity-instance-id="0">
+        <div class="panel panel-default" id="addPartners">
+            <div class="panel-heading" role="tab" id="addPartnersHeader">
+                <div class="panel-title">
+                    <a class="button collapsed" data-toggle="collapse" data-parent="#partner-accordion"
+                        [routerLink]="['/search']" aria-expanded="false" aria-controls="addPartnersPanel">
+                        <div class="collapsed-icon">
+                            <i class="fa fa-caret-right"></i>
+                        </div>
+                        <div class="expanded-icon">
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <span class="label-header make-green">Search Loan</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="editPartners" *ngIf="loginService.isAdminUser()">
+            <div class="panel-heading" role="tab" id="edit-partners-heading">
+                <div class="row panel-title">
+                    <div class="col-sm-12 col-offset-130">
+                        <a class="button show" data-toggle="collapse" data-parent="#partner-accordion"
+                            [routerLink]="['/loan/new']" aria-expanded="true" aria-controls="editPartnersPanel">
+                            <div class="collapsed-icon">
+                                <i class="fa fa-caret-right"></i>
+                            </div>
+                            <div class="expanded-icon">
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <span class="label-header make-blue">Add Loan</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

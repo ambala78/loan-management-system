@@ -32,10 +32,10 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((authorize) -> authorize
-                .antMatchers("/api/**/search/**", "/api/user", "/api/searchLoan", "/api/getLoan").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/api/**/search/**", "/api/user", "/api/searchLoan", 
+					"/api/getLoan").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/api/**").hasRole("ADMIN")
                 .antMatchers("/lms/**").hasRole("USER")
-                .antMatchers("/lmsui/**", "/", "/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().permitAll()
             )
             .csrf().disable()
