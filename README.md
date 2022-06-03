@@ -43,4 +43,8 @@ java -jar ./loan-management-system-0.0.1-SNAPSHOT.jar
 
 **For testing application API:** [try postman collection](./artifacts/bootcamp.postman_collection.json)
 
+## Steps to develop UI alone
+#### 1. Run API as a standalone application using `gradlew bootRun`
+#### 2. Run UI as a standalone application either using `npm run startdev` or using `ng serve --proxy-config proxy.conf.dev.json --port 4200`
+
 
