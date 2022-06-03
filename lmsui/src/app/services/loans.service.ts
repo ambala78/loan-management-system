@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { Loan } from '../models/loan';
+import { LmsError } from '../models/lms-error';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class LoansService {
     if (loanNumber) {
       params = params.append("loanNumber", loanNumber)
     };
-    return this.http.get<Loan>(this.searchLoanUrlPath, {
+    return this.http.get<Loan | LmsError>(this.searchLoanUrlPath, {
       params: params
     });
 
